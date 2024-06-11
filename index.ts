@@ -9,6 +9,7 @@ import { socketInstance } from "./src/socket";
 import cors from "cors";
 import { redisEnabler } from "./src/redis";
 
+const port = process.env.PORT || 3000;
 export const app = express();
 app.use(cors());
 
@@ -35,8 +36,8 @@ app.use("/user", userRouter);
 
 app.use("/weather", weatherRouter);
 
-app.listen(3000, () => {
-  console.log("Example app listening on port 3000");
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
 });
 
 redisEnabler();
